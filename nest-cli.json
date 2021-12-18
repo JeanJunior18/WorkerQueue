@@ -1,0 +1,30 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/WorkerQueue/src",
+  "monorepo": true,
+  "root": "apps/WorkerQueue",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/WorkerQueue/tsconfig.app.json"
+  },
+  "projects": {
+    "WorkerQueue": {
+      "type": "application",
+      "root": "apps/WorkerQueue",
+      "entryFile": "main",
+      "sourceRoot": "apps/WorkerQueue/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/WorkerQueue/tsconfig.app.json"
+      }
+    },
+    "KafkaProducer": {
+      "type": "library",
+      "root": "libs/KafkaProducer",
+      "entryFile": "index",
+      "sourceRoot": "libs/KafkaProducer/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/KafkaProducer/tsconfig.lib.json"
+      }
+    }
+  }
+}
