@@ -25,6 +25,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/KafkaProducer/tsconfig.lib.json"
       }
+    },
+    "Common": {
+      "type": "library",
+      "root": "libs/Common",
+      "entryFile": "index",
+      "sourceRoot": "libs/Common/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/Common/tsconfig.lib.json"
+      }
     }
   }
 }

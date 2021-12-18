@@ -23,6 +23,12 @@
       ],
       "@app/KafkaProducer/*": [
         "libs/KafkaProducer/src/*"
+      ],
+      "@app/Common": [
+        "libs/Common/src"
+      ],
+      "@app/Common/*": [
+        "libs/Common/src/*"
       ]
     }
   }
