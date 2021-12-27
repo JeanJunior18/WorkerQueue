@@ -1,3 +1,4 @@
+import { Event } from '@app/Common/domain';
 import { Inject, Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 import { Producer } from 'kafkajs';
@@ -17,7 +18,7 @@ export class KafkaProducerService implements OnModuleInit {
     this.kafkaProducer = await this.clientKafka.connect();
   }
 
-  async emit(topic: string, message: unknown) {
+  async emit(topic: string, message: Event<unknown>) {
     this.logger.verbose(
       `Emit message to topic ${topic}: ${JSON.stringify(message)}`,
     );

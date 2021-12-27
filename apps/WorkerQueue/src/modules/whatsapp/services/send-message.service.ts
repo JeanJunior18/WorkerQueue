@@ -1,6 +1,7 @@
+import { Event, TypeEvent } from '@app/Common/domain';
+import { SendMessageDto } from '@app/Common/dto/SendMessage.dto';
 import { KafkaProducerService } from '@app/KafkaProducer';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { SendMessageDto } from 'apps/WorkerQueue/src/modules/whatsapp/controllers/dto/SendMessage.dto';
 import { SessionRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/session-repository.port';
 
 @Injectable()
@@ -17,6 +18,9 @@ export class SendMessageService {
 
     if (!session) throw new NotFoundException('Session not found');
 
-    return this.kafkaProducer.emit(session.topic, message);
+    return this.kafkaProducer.emit(
+      session.topic,
+      new Event(TypeEvent.SEND_MESSAGE, message),
+    );
   }
 }

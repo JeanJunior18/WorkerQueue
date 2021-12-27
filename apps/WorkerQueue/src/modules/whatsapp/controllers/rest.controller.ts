@@ -1,6 +1,6 @@
+import { SendMessageDto } from '@app/Common/dto/SendMessage.dto';
 import { Body, Controller, Post } from '@nestjs/common';
 import { AddOrganizationDto } from 'apps/WorkerQueue/src/modules/whatsapp/controllers/dto/AddOorganization.dto';
-import { SendMessageDto } from 'apps/WorkerQueue/src/modules/whatsapp/controllers/dto/SendMessage.dto';
 import { AddOrganizationService } from 'apps/WorkerQueue/src/modules/whatsapp/services/add-organization.service';
 import { SendMessageService } from 'apps/WorkerQueue/src/modules/whatsapp/services/send-message.service';
 
