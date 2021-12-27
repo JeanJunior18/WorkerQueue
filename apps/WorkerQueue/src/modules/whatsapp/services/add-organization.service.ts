@@ -3,8 +3,6 @@ import { AddOrganizationDto } from 'apps/WorkerQueue/src/modules/whatsapp/contro
 import { Session } from 'apps/WorkerQueue/src/modules/whatsapp/core/session.entity';
 import { SessionRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/session-repository.port';
 
-import { v4 as uuid } from 'uuid';
-
 @Injectable()
 export class AddOrganizationService {
   constructor(private readonly sessionRepository: SessionRepositoryPort) {

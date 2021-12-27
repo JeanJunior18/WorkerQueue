@@ -11,7 +11,7 @@ describe('KafkaProducerService', () => {
         KafkaProducerService,
         {
           provide: 'KAFKA_SERVICE',
-          useClass: ClientKafka,
+          useValue: ClientKafka,
         },
       ],
     }).compile();
@@ -21,17 +21,5 @@ describe('KafkaProducerService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  });
-
-  it('should emit message to topic', async () => {
-    const topic = 'test';
-    const message = {
-      id: '123',
-      name: 'test',
-    };
-
-    const result = await service.emit(topic, message);
-
-    expect(result).toEqual({ topic, message });
   });
 });

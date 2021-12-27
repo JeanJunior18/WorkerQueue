@@ -1,6 +1,7 @@
 import { Inject, Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 import { Producer } from 'kafkajs';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class KafkaProducerService implements OnModuleInit {
@@ -21,7 +22,15 @@ export class KafkaProducerService implements OnModuleInit {
       `Emit message to topic ${topic}: ${JSON.stringify(message)}`,
     );
 
-    this.clientKafka.send(topic, message);
+    this.kafkaProducer.send({
+      topic,
+      messages: [
+        {
+          key: uuid(),
+          value: JSON.stringify(message),
+        },
+      ],
+    });
 
     return { topic, message };
   }
