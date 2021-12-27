@@ -1,4 +1,4 @@
-import { Session } from 'apps/WorkerQueue/src/modules/whatsapp/core/session.entity';
+import { Session } from 'apps/ApiGateway/src/modules/whatsapp/core/session.entity';
 
 export class SessionRepositoryPort {
   addSession: (session: Session) => Promise<void>;

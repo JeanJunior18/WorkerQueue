@@ -1,4 +1,4 @@
-import { Organization } from 'apps/WorkerQueue/src/modules/whatsapp/core/organization.entity';
+import { Organization } from 'apps/ApiGateway/src/modules/whatsapp/core/organization.entity';
 
 export class OrganizationRepositoryPort {
   addOrganization: (organization: Organization) => Promise<Organization>;

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { WhatsappModule } from 'apps/WorkerQueue/src/modules/whatsapp/whatsapp.module';
+import { WhatsappModule } from 'apps/ApiGateway/src/modules/whatsapp/whatsapp.module';
 import { HookModule } from 'plugins/app/hook.module';
 
 @Module({

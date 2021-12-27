@@ -1,6 +1,6 @@
 import { Injectable, Provider } from '@nestjs/common';
-import { Session } from 'apps/WorkerQueue/src/modules/whatsapp/core/session.entity';
-import { SessionRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/session-repository.port';
+import { Session } from 'apps/ApiGateway/src/modules/whatsapp/core/session.entity';
+import { SessionRepositoryPort } from 'apps/ApiGateway/src/modules/whatsapp/ports/session-repository.port';
 
 @Injectable()
 export class SessionRepository implements SessionRepositoryPort {

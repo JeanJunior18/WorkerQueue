@@ -1,9 +1,9 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
-import { AddOrganizationDto } from 'apps/WorkerQueue/src/modules/whatsapp/controllers/dto/AddOorganization.dto';
-import { Organization } from 'apps/WorkerQueue/src/modules/whatsapp/core/organization.entity';
-import { Session } from 'apps/WorkerQueue/src/modules/whatsapp/core/session.entity';
-import { OrganizationRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/organization-repository.port';
-import { SessionRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/session-repository.port';
+import { AddOrganizationDto } from 'apps/ApiGateway/src/modules/whatsapp/controllers/dto/AddOorganization.dto';
+import { Organization } from 'apps/ApiGateway/src/modules/whatsapp/core/organization.entity';
+import { Session } from 'apps/ApiGateway/src/modules/whatsapp/core/session.entity';
+import { OrganizationRepositoryPort } from 'apps/ApiGateway/src/modules/whatsapp/ports/organization-repository.port';
+import { SessionRepositoryPort } from 'apps/ApiGateway/src/modules/whatsapp/ports/session-repository.port';
 import { v4 as uuid } from 'uuid';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Injectable, Provider } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Organization } from 'apps/WorkerQueue/src/modules/whatsapp/core/organization.entity';
-import { OrganizationRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/organization-repository.port';
+import { Organization } from 'apps/ApiGateway/src/modules/whatsapp/core/organization.entity';
+import { OrganizationRepositoryPort } from 'apps/ApiGateway/src/modules/whatsapp/ports/organization-repository.port';
 import { Model } from 'mongoose';
 
 @Injectable()

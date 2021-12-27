@@ -1,8 +1,8 @@
 import { SendMessageDto } from '@app/Common/dto/SendMessage.dto';
 import { Body, Controller, Post } from '@nestjs/common';
-import { AddOrganizationDto } from 'apps/WorkerQueue/src/modules/whatsapp/controllers/dto/AddOorganization.dto';
-import { AddOrganizationService } from 'apps/WorkerQueue/src/modules/whatsapp/services/add-organization.service';
-import { SendMessageService } from 'apps/WorkerQueue/src/modules/whatsapp/services/send-message.service';
+import { AddOrganizationDto } from 'apps/ApiGateway/src/modules/whatsapp/controllers/dto/AddOorganization.dto';
+import { AddOrganizationService } from 'apps/ApiGateway/src/modules/whatsapp/services/add-organization.service';
+import { SendMessageService } from 'apps/ApiGateway/src/modules/whatsapp/services/send-message.service';
 
 @Controller()
 export class WhatsappController {

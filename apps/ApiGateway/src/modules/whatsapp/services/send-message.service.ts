@@ -2,7 +2,7 @@ import { Event, TypeEvent } from '@app/Common/domain';
 import { SendMessageDto } from '@app/Common/dto/SendMessage.dto';
 import { KafkaProducerService } from '@app/KafkaProducer';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { SessionRepositoryPort } from 'apps/WorkerQueue/src/modules/whatsapp/ports/session-repository.port';
+import { SessionRepositoryPort } from 'apps/ApiGateway/src/modules/whatsapp/ports/session-repository.port';
 
 @Injectable()
 export class SendMessageService {
