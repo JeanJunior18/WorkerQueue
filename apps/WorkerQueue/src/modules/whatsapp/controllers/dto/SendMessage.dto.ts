@@ -10,4 +10,7 @@ export class SendMessageDto {
 
   @ApiProperty({ required: false })
   text?: string;
+
+  @ApiProperty()
+  organizationId: string;
 }
