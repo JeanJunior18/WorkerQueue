@@ -1,4 +1,4 @@
-import { SendMessageDto } from '@app/Common/dto/SendMessage.dto';
+import { SendMessageDto } from '@app/Common/dto';
 import { Body, Controller, Post } from '@nestjs/common';
 import { AddOrganizationDto } from 'apps/ApiGateway/src/modules/whatsapp/controllers/dto/AddOorganization.dto';
 import { AddOrganizationService } from 'apps/ApiGateway/src/modules/whatsapp/services/add-organization.service';

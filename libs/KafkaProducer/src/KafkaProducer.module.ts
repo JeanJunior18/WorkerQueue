@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ClientKafka, ClientsModule, Transport } from '@nestjs/microservices';
 import { KafkaProducerService } from './KafkaProducer.service';
 
 @Module({
@@ -18,7 +18,16 @@ import { KafkaProducerService } from './KafkaProducer.service';
       },
     ]),
   ],
-  providers: [KafkaProducerService],
+  providers: [
+    KafkaProducerService,
+    {
+      provide: 'KAFKA_PRODUCER',
+      useFactory: async (client: ClientKafka) => {
+        return client.connect();
+      },
+      inject: ['KAFKA_SERVICE'],
+    },
+  ],
   exports: [KafkaProducerService],
 })
 export class KafkaProducerModule {}

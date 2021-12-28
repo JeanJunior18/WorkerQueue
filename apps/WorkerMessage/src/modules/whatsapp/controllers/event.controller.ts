@@ -1,13 +1,20 @@
-import { SendMessageDto } from '@app/Common/dto/SendMessage.dto';
-import { Body, Controller, Post } from '@nestjs/common';
-import { SendMessageService } from 'apps/ApiGateway/src/modules/whatsapp/services/send-message.service';
+import 'dotenv/config';
+import { KafkaEvent, SendMessageDto } from '@app/Common/dto';
+import { Body, Controller, Logger } from '@nestjs/common';
+import { EventPattern } from '@nestjs/microservices';
 
 @Controller()
 export class WhatsappEventsController {
-  constructor(private readonly sendMessageService: SendMessageService) {}
+  private readonly logger = new Logger(WhatsappEventsController.name);
+  private readonly topic = process.env.WORKER_MESSAGE_TOPIC;
 
-  @Post('send')
-  sendMessage(@Body() message: SendMessageDto) {
-    return this.sendMessageService.execute(message);
+  constructor() {
+    if (!this.topic) throw new Error('Topic not defined');
+    this.logger.log(`Topic: ${this.topic}`);
+  }
+
+  @EventPattern(process.env.WORKER_MESSAGE_TOPIC)
+  sendMessage(@Body() event: KafkaEvent<SendMessageDto>) {
+    this.logger.log(`Event received: ${JSON.stringify(event.value)}`);
   }
 }

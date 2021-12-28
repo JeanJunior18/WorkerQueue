@@ -17,6 +17,15 @@
         "tsConfigPath": "apps/ApiGateway/tsconfig.app.json"
       }
     },
+    "WorkerMessage": {
+      "type": "application",
+      "root": "apps/WorkerMessage",
+      "entryFile": "main",
+      "sourceRoot": "apps/WorkerMessage/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/WorkerMessage/tsconfig.app.json"
+      }
+    },
     "KafkaProducer": {
       "type": "library",
       "root": "libs/KafkaProducer",
