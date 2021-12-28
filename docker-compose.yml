@@ -1,0 +1,68 @@
+version: '3'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://172.18.0.1:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+        
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:6.0.1
+    hostname: control-center
+    depends_on:
+      - kafka
+    ports:
+      - "9021:9021"
+    environment:
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka:9092'
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      PORT: 9021
+
+  api-gateway:
+    build: 
+      context: .
+      dockerfile: Dockerfile.api
+    ports: 
+      - "3000:3000"
+    environment:
+      KAFKA_URL: kafka:9092
+      KAFKA_CLIENT_ID: kafka-client-1
+      MONGO_URI: ${MONGO_URI}
+    depends_on:
+      - kafka
+
+  worker-jean:
+    build: 
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      KAFKA_URL: kafka:9092
+      KAFKA_CLIENT_ID: worker-jean
+      WORKER_MESSAGE_TOPIC: worker1
+    depends_on:
+      - kafka
+
+  worker-junior:
+    build: 
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      KAFKA_URL: kafka:9092
+      KAFKA_CLIENT_ID: worker-junior
+      WORKER_MESSAGE_TOPIC: wpp1
+    depends_on:
+      - kafka
